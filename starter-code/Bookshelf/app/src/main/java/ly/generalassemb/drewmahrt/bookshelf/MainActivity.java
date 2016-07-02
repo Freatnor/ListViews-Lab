@@ -60,14 +60,18 @@ public class MainActivity extends AppCompatActivity {
                 View view = convertView;
                 if(view == null){
                     LayoutInflater inflater = (LayoutInflater) MainActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                    view = inflater.inflate(android.R.layout.simple_list_item_2, null);
+                    view = inflater.inflate(R.layout.book_layout, null);
                 }
 
-                TextView bookNameView = (TextView) view.findViewById(android.R.id.text1);
-                TextView authorNameView = (TextView) view.findViewById(android.R.id.text2);
+                TextView bookNameView = (TextView) view.findViewById(R.id.text1);
+                TextView authorNameView = (TextView) view.findViewById(R.id.text2);
+                TextView yearView = (TextView) view.findViewById(R.id.text3);
+                TextView pageCountView = (TextView) view.findViewById(R.id.text4);
 
                 bookNameView.setText(mBookList.get(position).getTitle());
                 authorNameView.setText(mBookList.get(position).getAuthor());
+                yearView.setText("Published in " + mBookList.get(position).getYearPublished());
+                pageCountView.setText(mBookList.get(position).getPages() + " pages");
 
                 return view;
             }
@@ -79,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView bookNameView = (TextView) view.findViewById(android.R.id.text1);
-                TextView authorNameView = (TextView) view.findViewById(android.R.id.text2);
+                TextView bookNameView = (TextView) view.findViewById(R.id.text1);
+                TextView authorNameView = (TextView) view.findViewById(R.id.text2);
 
 
                 bookNameView.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
